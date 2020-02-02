@@ -1,0 +1,76 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Typescript debug",
+      "program": "${workspaceFolder}/dist/server.js",
+      "preLaunchTask": "npm: vscodePreLaunchTask",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector",
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
+      "env": {
+        "NODE_ENV": "local"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha All",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "'${workspaceFolder}/{,!(node_modules)/}dist/**/*.test.js'"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha Single Test",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "'${workspaceFolder}/{,!(node_modules)/}dist/**/*.test.js'",
+        "--grep",
+        "'Member contracts API'" // Put name of your test case here
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha single file",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--timeout",
+        "999999",
+        "--colors",
+        "dist/app/contract/contract.test.js" // Put name of your file here
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  // "compounds": [
+  //   {
+  //     "name": "Typescript/Mocha",
+  //     "configurations": [
+  //       "Typescript debug",
+  //       "Mocha All"
+  //     ]
+  //   }
+  // ]
+}

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "dist",
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ],
+      "@constants": [
+        "src/config/constants/constants.ts"
+      ],
+      "@environment": [
+        "src/config/constants/environment.ts"
+      ],
+    },
+    "lib": [
+      "es2017"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "src/env/**/*.json"
+  ]
+}

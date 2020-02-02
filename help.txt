@@ -1,0 +1,85 @@
+sudo chown postgres:_postgres /postgresdata
+
+DETAIL:  Tablespace "corpserv_data" does not exist.
+DETAIL:  Tablespace "corpserv_audit_data" does not exist.
+DETAIL:  Tablespace "corpserv_security_data" does not exist.
+DETAIL:  Tablespace "corpserv_index" does not exist.
+DETAIL:  Tablespace "corpserv_audit_index" does not exist.
+DETAIL:  Tablespace "corpserv_security_index" does not exist.
+
+/odek-namespace
+ sudo mkdir /odek-namespace
+sudo mkdir /odek-namespace/corpserv_data_ns
+sudo mkdir /odek-namespace/corpserv_audit_data_ns
+sudo mkdir /odek-namespace/corpserv_security_data_ns
+sudo mkdir /odek-namespace/corpserv_index_ns
+sudo mkdir /odek-namespace/corpserv_audit_index_ns
+sudo mkdir /odek-namespace/corpserv_security_index_ns
+
+sudo chown postgres:_postgres /odek-namespace/corpserv_data_ns
+sudo chown postgres:_postgres /odek-namespace/corpserv_audit_data_ns
+sudo chown postgres:_postgres /odek-namespace/corpserv_index_ns
+sudo chown postgres:_postgres /odek-namespace/corpserv_audit_index_ns
+sudo chown postgres:_postgres /odek-namespace/corpserv_security_data_ns
+sudo chown postgres:_postgres /odek-namespace/corpserv_security_index_ns
+
+sequelize-auto -o "./models-seq" -d AppCraft -h localhost -u postgres -p 5432 -x postgres -e postgres -z -t corpserv.tenant,corpserv.party
+
+
+
+
+We have to connect via the 4 environment 
+
+Manish needs to setup USSD gateway on all 4 environment 
+Test if *138 route 
+Also ESB access will be ready on 11th Oct 
+very simple ESB access 
+
+
+sudo apt-get install build-essential
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic odek-logs
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+
+A CA file has been bootstrapped using certificates from the SystemRoots
+keychain. To add additional certificates (e.g. the certificates added in
+the System keychain), place .pem files in
+  /usr/local/etc/openssl/certs
+
+and run
+  /usr/local/opt/openssl/bin/c_rehash
+
+openssl is keg-only, which means it was not symlinked into /usr/local,
+because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.
+
+If you need to have openssl first in your PATH run:
+  echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find openssl you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openssl/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl/include"
+These params are for macOS and are set to point to different directories from those used on Linux
+
+Without them pointing to the right locations librdkafka can't compile with SSL and SASL support.
+
+lsof -i tcp:3000 
+
+
+var http = require('http');
+
+http.createServer(onRequest_a).listen(9011);
+http.createServer(onRequest_b).listen(9012);
+
+function onRequest_a (req, res) {
+  res.write('Response from 9011\n');
+  res.end();
+}
+
+function onRequest_b (req, res) {
+  res.write('Response from 9012\n');
+  res.end();
+}

@@ -20,9 +20,6 @@
       "@constants": [
         "src/config/constants/constants.ts"
       ],
-      "@environment": [
-        "src/config/constants/environment.ts"
-      ],
     },
     "lib": [
       "es2017"

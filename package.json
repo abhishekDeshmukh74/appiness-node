@@ -12,7 +12,7 @@
   "dependencies": {
     "compression": "^1.7.3",
     "debug": "^3.2.6",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "helmet": "3.21.1",
     "mongoose": "5.7.1",
     "module-alias": "2.2.1"
